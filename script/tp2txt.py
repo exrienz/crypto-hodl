@@ -21,19 +21,21 @@ try:
     # Parse the response content
     soup = BeautifulSoup(response.content, 'html.parser')
 
-    # Initialize a variable to store the value
-    value_found = False
-
-    # Extract the desired text
+    # Extract and store all price values
+    values = []
+    
     for p in soup.find_all('p'):
         text = p.get_text()
         if 'of coin at ' in text:
-            value = text.split(' USD')[0].split()[8]
-            print(value)
-            value_found = True
-            break  # Exit after finding the first match
+            try:
+                value = text.split(' USD')[0].split()[-2]  # Extracts the second-last word (price)
+                values.append(value)
+            except IndexError:
+                continue  # Skip if parsing fails
 
-    if not value_found:
+    if values:
+        print("\n".join(values))  # Print all extracted prices, one per line
+    else:
         print("No relevant information found.")
 
 except requests.exceptions.RequestException as e:
