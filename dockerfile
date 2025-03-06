@@ -1,7 +1,7 @@
-# Use official PHP Apache image
+# Use official PHP 8.1 with Apache
 FROM php:8.1-apache
 
-# Install required PHP extensions, MySQL client, Python3 and pip
+# Install required PHP extensions, MySQL client, Python3, and pip
 RUN apt-get update && apt-get install -y \
     default-mysql-client \
     python3 \

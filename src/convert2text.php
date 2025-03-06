@@ -1,12 +1,13 @@
 <?php
 // Get the value from the GET request
-$input = $_GET['hodl_id'] ?? '';
+@$input = $_GET['hodl_id'] ?? '';
+$full_domain = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'];
 
 // Sanitize the input to remove unwanted characters
 $sanitizedInput = preg_replace('/[^a-zA-Z0-9]/', '', $input);
 
 // Execute the Python script with the sanitized input
-$command = 'python3 ../script/tp2txt.py ' . escapeshellarg($sanitizedInput);
+$command = 'python3 ../script/tp2txt.py ' . escapeshellarg($sanitizedInput). ' '.$full_domain;
 $output = shell_exec($command);
 
 // Display the output
