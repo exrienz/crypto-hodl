@@ -26,11 +26,13 @@ try:
     
     for p in soup.find_all('p'):
         text = p.get_text()
-        if 'of coin at ' in text:
+        if 'of coin at ' in text and 'USD' in text:
             try:
-                value = text.split(' USD')[0].split()[-2]  # Extracts the second-last word (price)
+                words = text.split()
+                usd_index = words.index('USD')  # Find the index of "USD"
+                value = words[usd_index - 1]  # The price is the word before "USD"
                 values.append(value)
-            except IndexError:
+            except (ValueError, IndexError):
                 continue  # Skip if parsing fails
 
     if values:
