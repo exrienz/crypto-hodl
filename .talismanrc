@@ -1,4 +1,6 @@
 fileignoreconfig:
 - filename: src/index.php
   checksum: 3a965d2124ac23a0948d6a46f9a075372902776817daba31ac5e62bbdaf141d9
+- filename: README.md
+  checksum: ea181238ebc2b8e7898c4617b1dd779ef69be7d99d1ee89e7e4ee1871cf8243d
 version: ""
