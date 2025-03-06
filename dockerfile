@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
     && docker-php-ext-install mysqli pdo pdo_mysql \
-    && pip3 install beautifulsoup4
+    && pip3 install beautifulsoup4 --break-system-packages
 
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite

@@ -1,0 +1,4 @@
+fileignoreconfig:
+- filename: src/index.php
+  checksum: 3a965d2124ac23a0948d6a46f9a075372902776817daba31ac5e62bbdaf141d9
+version: ""
